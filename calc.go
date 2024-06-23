@@ -171,32 +171,33 @@ func main() {
 		
 		if compare(oper[0])==false{ //сравнение операндов
 			fmt.Println("Выдача паники, так как формат математической операции не удовлетворяет заданию — введен не подходящий первый операнд.")
-		}
-		if compare(oper[1])==false{
-			fmt.Println("Выдача паники, так как формат математической операции не удовлетворяет заданию — введен не подходящий второй операнд.")
-		}
-		
-		oper1, err1 := strconv.Atoi(oper[0])//преобразование первого операнда в int
-		oper2, err2 := strconv.Atoi(oper[1])//преобразование второго операнда в int
-		_ = err1
-		_ = err2
-		result:= calc(oper1, oper2)//счет
-		
-		if r==1{ // определение римский счет или арабский
-			fmt.Println("Выдача паники, так как используются одновременно разные системы счисления.")
-		}else if r>1{//счет римский
-			if result <= 0{
-				fmt.Println("Выдача паники, так как в римской системе только натуральные числа.")
+		}else{
+			if compare(oper[1])==false{
+				fmt.Println("Выдача паники, так как формат математической операции не удовлетворяет заданию — введен не подходящий второй операнд.")
 			}else{
-				result_rom := replace_rom(result)
-				fmt.Println("Ответ")
-				fmt.Println(new,"=", result_rom)
-			}
-		}else if r==0{//счет арабский
-			fmt.Println("Ответ")
-			fmt.Println(new,"=", result)
-		}
 		
+				oper1, err1 := strconv.Atoi(oper[0])//преобразование первого операнда в int
+				oper2, err2 := strconv.Atoi(oper[1])//преобразование второго операнда в int
+				_ = err1
+				_ = err2
+				result:= calc(oper1, oper2)//счет
+		
+				if r==1{ // определение римский счет или арабский
+					fmt.Println("Выдача паники, так как используются одновременно разные системы счисления.")
+				}else if r>1{//счет римский
+					if result <= 0{
+						fmt.Println("Выдача паники, так как в римской системе только натуральные числа.")
+					}else{
+						result_rom := replace_rom(result)
+						fmt.Println("Ответ")
+						fmt.Println(new,"=", result_rom)
+					}
+				}else if r==0{//счет арабский
+					fmt.Println("Ответ")
+					fmt.Println(new,"=", result)
+				}
+			}
+		}
 	}
 			
 }
